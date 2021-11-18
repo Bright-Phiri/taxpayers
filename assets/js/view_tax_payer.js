@@ -3,33 +3,25 @@ $(document).ready(function() {
 });
 
 
-var api_url = sessionStorage.getItem("apiURL");
-
 function load_tax_payers() {
     $.ajax({
         type: "GET",
-        url: api_url + "/programming/challenge/webservice/Taxpayers/getAll",
-        dataType: "jsonp",
-        headers: {
-            "Access-Control-Allow-Origin": "*",
-            "candidateid": "bphiri.aki@gmail.com",
-            "apikey": "3fdb48c5-336b-47f9-87e4-ae73b8036a1c"
-        },
+        url: '../controller/tax_payers_list.php',
+        dataType: "json",
         success: function(res) {
-            data = draw_tax_payers_table(res.data);
+            data = draw_tax_payers_table(res);
             $("#table-body").html(data);
             $("#taxpayerstable").DataTable();
         },
 
     });
-
+    delete_tax_payer();
 }
 
 function draw_tax_payers_table(tax_payers) {
     var tax_payers_data = '';
     $.each(tax_payers, function(key, value) {
         tax_payers_data += '<tr>';
-        tax_payers_data += '<td>' + value.id + '</td>';
         tax_payers_data += '<td>' + value.TPIN + '</td>';
         tax_payers_data += '<td>' + value.BusinessCertificateNumber + '</td>';
         tax_payers_data += '<td>' + value.TradingName + '</td>';
@@ -45,11 +37,11 @@ function draw_tax_payers_table(tax_payers) {
 }
 
 
-function delete_product() {
+function delete_tax_payer() {
     $(document).on("click", "#deleteTaxPayer", function() {
         var tpin = $(this).attr("data-id1");
         swal({
-                title: "Delete Product",
+                title: "Delete Tax Payer",
                 text: "Are you sure you want to delete this tax payer?",
                 icon: "warning",
                 buttons: true,
@@ -58,30 +50,20 @@ function delete_product() {
             .then((willDelete) => {
                 if (willDelete) {
                     $.ajax({
-                        type: "POST",
-                        url: api_url + "programming/challenge/webservice/Taxpayers/delete",
-                        contentType: "application/json",
-                        dataType: "jsonp",
-                        headers: {
-                            "Access-Control-Allow-Origin": "*",
-                            "candidateid": "bphiri.aki@gmail.com",
-                            "apikey": "3fdb48c5-336b-47f9-87e4-ae73b8036a1c"
+                        url: '../controller/delete_tax_payer.php',
+                        method: 'POST',
+                        dataType: "json",
+                        data: {
+                            TPIN: tpin
                         },
-                        data: JSON.stringify({ TPIN: tpin }),
+                        cache: false,
                         success: function(res) {
-                            if (res.ResultCode == 1) {
-                                swal("Info", res.Remark, "infor").then(function() {
+                            if (res == true) {
+                                swal("Information", "Tax payer successfully deleted", "info").then(function() {
                                     load_tax_payers();
                                 });
-                            } else {
-                                swal("Error", res.Remark, "error");
                             }
                         },
-                        error: function(jqXHR, status, error) {
-                            if (jqXHR.status == 404) {
-                                swal("Error", "The requested URL was not found", "error");
-                            }
-                        }
                     });
                 } else {
 
