@@ -37,7 +37,7 @@ function add_tax_payer() {
                     if (size == 3) {
                         swal("Information", res.Remark, "info");
                     } else {
-                        swal("Information", "Tax Payer successfully added", "info").then(function() {
+                        swal("Information", "Tax Payer successfully added", "success").then(function() {
                             $("form").trigger("reset");
                         });
                     }
