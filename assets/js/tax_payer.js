@@ -29,7 +29,7 @@ function add_tax_payer() {
                     MobileNumber: mobilenumber,
                     Email: email,
                     PhysicalLocation: physicallocation,
-                    Username: username
+                    User: username
                 },
                 cache: false,
                 success: function(res) {

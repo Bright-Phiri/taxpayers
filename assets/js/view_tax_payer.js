@@ -29,7 +29,7 @@ function draw_tax_payers_table(tax_payers) {
         tax_payers_data += '<td>' + value.MobileNumber + '</td>';
         tax_payers_data += '<td>' + value.Email + '</td>';
         tax_payers_data += '<td>' + value.PhysicalLocation + '</td>';
-        tax_payers_data += '<td>' + value.occupation + '</td>';
+        tax_payers_data += '<td>' + value.Username + '</td>';
         tax_payers_data += "<td colspan='2' class='d-flex'><Button class='btn btn-outline-success btn-sm' id='editTaxPayer' data-id='" + value.id + "'> <i class='fa fa-pencil'></i></Button>&nbsp;&nbsp;&nbsp;<Button class='btn btn-outline-danger btn-sm mr-5' id='deleteTaxPayer' data-id1='" + value.TPIN + "'><i class='fa fa-trash'></i></Button></td>";
         tax_payers_data += '</tr>';
     });
@@ -59,7 +59,7 @@ function delete_tax_payer() {
                         cache: false,
                         success: function(res) {
                             if (res == true) {
-                                swal("Information", "Tax payer successfully deleted", "info").then(function() {
+                                swal("Information", "Tax payer successfully deleted", "success").then(function() {
                                     load_tax_payers();
                                 });
                             }

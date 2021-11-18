@@ -6,7 +6,7 @@ $regdate = $_POST['BusinessRegistrationDate'];
 $mobilenumber = $_POST['MobileNumber'];
 $email = $_POST['Email'];
 $physicallocation = $_POST['PhysicalLocation'];
-$username = $_POST['Username'];
+$user = $_POST['User'];
 $postdata = http_build_query(
     array(
         'TPIN' => $tpn,
@@ -16,7 +16,7 @@ $postdata = http_build_query(
         'MobileNumber' => $mobilenumber,
         'Email' => $email,
         'PhysicalLocation' => $physicallocation,
-        'Username' => $username
+        'Username' => $user
     )
 );
 
