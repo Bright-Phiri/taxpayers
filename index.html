@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Patient Health Record</title>
-    <link rel="icon" href="assets/images/patient_diagnosis.png" type="image/x-icon" />
+    <title>Tax Payers</title>
+    <link rel="icon" href="../assets/images/mra.jpg" type="image/x-icon" />
     <script>
-        sessionStorage.setItem("https://www.mra.mw/sandbox");
-        if (sessionStorage.getItem("Authorization") == null) {
-            window.location.href = "views/login.html";
+        sessionStorage.setItem("apiURL", "https://www.mra.mw/sandbox");
+        if (sessionStorage.getItem("Username") == null) {
+            window.location.href = 'views/login.html';
         } else {
-            window.location.href = "views/add_tax_payer.html";
+            window.location.href = 'views/add_tax_payer.html';
         }
     </script>
 </head>

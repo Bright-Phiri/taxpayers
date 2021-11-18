@@ -26,7 +26,11 @@
     </style>
 
     <link href="../assets/css/dashboard.css" rel="stylesheet" />
-    <script></script>
+    <script>
+        if (sessionStorage.getItem("Username") == null) {
+            window.location.href = "login.html";
+        }
+    </script>
 </head>
 
 <body>
@@ -211,5 +215,7 @@
     <script src="../assets/js/dashboard.js"></script>
     <script src="../assets/js/tax_payer.js"></script>
 </body>
+
+</html>
 
 </html>
