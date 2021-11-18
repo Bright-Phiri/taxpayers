@@ -15,6 +15,7 @@ function load_tax_payers() {
         },
 
     });
+    select_tax_payer();
     delete_tax_payer();
 }
 
@@ -36,6 +37,19 @@ function draw_tax_payers_table(tax_payers) {
     return tax_payers_data;
 }
 
+
+function select_tax_payer() {
+    $(document).on('click', '#editTaxPayer', function() {
+        var index = 1;
+        $(this).closest('tr').find('td').each(function() {
+            var textval = $(this).text();
+            console.log(textval);
+            sessionStorage.setItem(index, textval);
+            index++;
+        });
+        window.location.href = "../views/edit_tax_payer.html";
+    });
+}
 
 function delete_tax_payer() {
     $(document).on("click", "#deleteTaxPayer", function() {
