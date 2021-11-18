@@ -11,32 +11,28 @@ function sign_in() {
         if (email == "" || password == "") {
             swal("Fields Validation", "Please fill in all the fields", "warning");
         } else {
-
             $.ajax({
-                type: "POST",
-                url: api_url + "/programming/challenge/webservice/auth/login",
-                dataType: "jsonp",
-                contentType: "application/json",
-                headers: {
-                    "Access-Control-Allow-Origin": "*",
-                    "candidateid": "bphiri.aki@gmail.com",
-                    "apikey": "3fdb48c5-336b-47f9-87e4-ae73b8036a1c"
+                url: '../controller/signin.php',
+                method: 'POST',
+                data: {
+                    Email: email,
+                    Password: password
                 },
-                data: JSON.stringify({ Email: email, Password: password }),
-                success: function(res) {
-                    if (res.ResultCode == 1) {
-                        swal("Access granted", res.Remark, "info").then(function() {
-                            sessionStorage.setItem("Username", res.Username);
+                dataType: "JSON",
+                cache: false,
+                success: function(response) {
+                    if (response.Authenticated == true) {
+                        sessionStorage.setItem("Username", response.UserDetails.Username);
+                        sessionStorage.setItem("Authorization", response.Token.Value);
+                        swal("infor", "Login " + response.Remark, "info").then(function() {
                             window.location.href = '../views/add_tax_payer.html';
                         });
                     } else {
-                        swal("Error", res.Remark, "error");
+                        swal("Error", response.Remark, "error")
                     }
                 },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    swal("Error", textStatus, "error");
-                }
             });
+
         }
     });
 }
