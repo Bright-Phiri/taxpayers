@@ -24,7 +24,7 @@ function sign_in() {
                     if (response.Authenticated == true) {
                         sessionStorage.setItem("Username", response.UserDetails.Username);
                         sessionStorage.setItem("Authorization", response.Token.Value);
-                        swal("infor", "Login " + response.Remark, "info").then(function() {
+                        swal("Information", "Login " + response.Remark, "info").then(function() {
                             window.location.href = '../views/add_tax_payer.html';
                         });
                     } else {
