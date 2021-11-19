@@ -7,3 +7,7 @@ Getting Started
 - Clone or download the git repository
 - Copy or move the downloaded repository to xampp\htdocs folder which located in C drive
 - Open up a web browser and run the project by typing in the downloaded repo URL field
+
+OR the access the deployed site using this:  https://taxpayersmramw.netlify.app/
+
+
