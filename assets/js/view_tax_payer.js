@@ -60,7 +60,7 @@ function delete_tax_payer() {
         var tpin = $(this).attr("data-id1");
         swal({
                 title: "Delete Tax Payer",
-                text: "Are you sure you want to delete this tax payer?",
+                text: "Are you sure you want to delete this Taxpayer?",
                 icon: "warning",
                 buttons: true,
                 dangerMode: true,
@@ -78,7 +78,7 @@ function delete_tax_payer() {
                         cache: false,
                         success: function(res) {
                             if (res == true) {
-                                swal("Information", "Tax payer successfully deleted", "success").then(function() {
+                                swal("Information", "Taxpayer successfully deleted", "success").then(function() {
                                     load_tax_payers();
                                 });
                             }

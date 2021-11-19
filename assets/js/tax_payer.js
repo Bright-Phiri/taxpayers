@@ -68,7 +68,7 @@ function add_tax_payer() {
                         if (size == 3) {
                             swal("Information", res.Remark, "info");
                         } else {
-                            swal("Information", "Tax Payer successfully added", "success").then(function() {
+                            swal("Information", "Taxpayer successfully added", "success").then(function() {
                                 $("form").trigger("reset");
                             });
                         }
@@ -117,7 +117,7 @@ function update_tax_payer() {
             } else {
                 swal({
                         title: "Save changes?",
-                        text: "Are you sure you want to update this tax payer?",
+                        text: "Are you sure you want to update this Taxpayer?",
                         icon: "warning",
                         buttons: true,
                         dangerMode: true,
@@ -144,7 +144,7 @@ function update_tax_payer() {
                                     if (size == 3) {
                                         swal("Information", res.Remark, "info");
                                     } else {
-                                        swal("Information", "Tax Payer successfully updated", "success").then(function() {
+                                        swal("Information", "Taxpayer successfully updated", "success").then(function() {
                                             $("form").trigger("reset");
                                             sessionStorage.removeItem(1);
                                             sessionStorage.removeItem(2);
