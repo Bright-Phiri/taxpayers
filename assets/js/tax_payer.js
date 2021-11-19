@@ -9,6 +9,7 @@ var num_reg = /^[0-9]+$/;
 var contact_reg1 = /^0[8]{2}[0-9]{7}/;
 var contact_reg2 = /^0[9]{2}[0-9]{7}/;
 var names_reg_pattern = /^[a-z0-9]+$/i;
+var regEx = /^[a-z][a-z\s]*$/;
 var email_pattern = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 function add_tax_payer() {
@@ -30,7 +31,7 @@ function add_tax_payer() {
                 swal("Fields Validation", "TPN is invalid", "warning");
             } else if (!certificate_number.match(names_reg_pattern)) {
                 swal("Fields Validation", "Certificate number is invalid", "warning");
-            } else if (!trading_name.match(names_reg_pattern)) {
+            } else if (!trading_name.match(regEx)) {
                 swal("Fields Validation", "Trading name is invalid", "warning");
             } else if (regi > date && regi.getDay() != date.getDay()) {
                 swal("Fields Validation", "Date is invalid", "warning");
@@ -40,7 +41,7 @@ function add_tax_payer() {
                 swal("Fields Validation", "Phone number is invalid", "warning");
             } else if (!email.match(email_pattern)) {
                 swal("Fields Validation", "Email is invalid", "warning");
-            } else if (!physicallocation.match(names_reg_pattern)) {
+            } else if (!physicallocation.match(regEx)) {
                 swal("Fields Validation", "Location is invalid", "warning");
             } else {
                 $.ajax({
@@ -95,7 +96,7 @@ function update_tax_payer() {
         } else {
             if (!certificate_number.match(names_reg_pattern)) {
                 swal("Fields Validation", "Certificate number is invalid", "warning");
-            } else if (!trading_name.match(names_reg_pattern)) {
+            } else if (!trading_name.match(regEx)) {
                 swal("Fields Validation", "Trading name is invalid", "warning");
             } else if (regi > date && regi.getDay() != date.getDay()) {
                 swal("Fields Validation", "Date is invalid", "warning");
@@ -105,7 +106,7 @@ function update_tax_payer() {
                 swal("Fields Validation", "Phone number is invalid", "warning");
             } else if (!email.match(email_pattern)) {
                 swal("Fields Validation", "Email is invalid", "warning");
-            } else if (!physicallocation.match(names_reg_pattern)) {
+            } else if (!physicallocation.match(regEx)) {
                 swal("Fields Validation", "Location is invalid", "warning");
             } else {
                 swal({
