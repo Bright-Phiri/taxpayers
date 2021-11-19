@@ -9,7 +9,7 @@ var num_reg = /^[0-9]+$/;
 var contact_reg1 = /^0[8]{2}[0-9]{7}/;
 var contact_reg2 = /^0[9]{2}[0-9]{7}/;
 var names_reg_pattern = /^[a-z0-9]+$/i;
-var regEx = /^[a-z][a-z\s]*$/;
+var regEx = /^[A-Za-z0-9 ]+$/;
 var email_pattern = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 function add_tax_payer() {
