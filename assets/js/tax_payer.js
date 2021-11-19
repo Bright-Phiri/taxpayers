@@ -3,7 +3,6 @@ $(document).ready(function() {
     update_tax_payer();
 });
 
-var api_url = sessionStorage.getItem("apiURL");
 var username = sessionStorage.getItem("Username");
 var num_reg = /^[0-9]+$/;
 var contact_reg1 = /^0[8]{2}[0-9]{7}/;
@@ -28,14 +27,19 @@ function add_tax_payer() {
             swal("Fields Validation", "Please fill in all the fields", "warning");
         } else {
             if (!tpin.match(num_reg)) {
-                swal("Fields Validation", "TPN is invalid", "warning");
+                swal("Fields Validation", "TPIN is invalid", "warning");
+            } else if (tpin.length != 8) {
+                swal("Fields Validation", "TPIN is invalid", "warning");
             } else if (!certificate_number.match(names_reg_pattern)) {
+                swal("Fields Validation", "Certificate number is invalid", "warning");
+            } else if (certificate_number.length != 10) {
                 swal("Fields Validation", "Certificate number is invalid", "warning");
             } else if (!trading_name.match(regEx)) {
                 swal("Fields Validation", "Trading name is invalid", "warning");
             } else if (regi > date && regi.getDay() != date.getDay()) {
                 swal("Fields Validation", "Date is invalid", "warning");
-            } else if (!mobilenumber.match(contact_reg1) && !mobilenumber.match(contact_reg2)) {
+            } else
+            if (!mobilenumber.match(contact_reg1) && !mobilenumber.match(contact_reg2)) {
                 swal("Fields Validation", "Phone number is invalid", "warning");
             } else if (mobilenumber.length != 10) {
                 swal("Fields Validation", "Phone number is invalid", "warning");
@@ -95,6 +99,8 @@ function update_tax_payer() {
             swal("Fields Validation", "Please fill in all the fields", "warning");
         } else {
             if (!certificate_number.match(names_reg_pattern)) {
+                swal("Fields Validation", "Certificate number is invalid", "warning");
+            } else if (certificate_number.length != 10) {
                 swal("Fields Validation", "Certificate number is invalid", "warning");
             } else if (!trading_name.match(regEx)) {
                 swal("Fields Validation", "Trading name is invalid", "warning");

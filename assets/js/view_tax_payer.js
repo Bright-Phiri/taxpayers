@@ -2,12 +2,16 @@ $(document).ready(function() {
     load_tax_payers();
 });
 
+var username = sessionStorage.getItem("Username");
 
 function load_tax_payers() {
     $.ajax({
         type: "GET",
         url: '../controller/tax_payers_list.php',
         dataType: "json",
+        data: {
+            User: username
+        },
         success: function(res) {
             data = draw_tax_payers_table(res);
             $("#table-body").html(data);
@@ -68,7 +72,8 @@ function delete_tax_payer() {
                         method: 'POST',
                         dataType: "json",
                         data: {
-                            TPIN: tpin
+                            TPIN: tpin,
+                            User: username
                         },
                         cache: false,
                         success: function(res) {

@@ -1,8 +1,8 @@
 <?php
-
+$user = $_GET['User'];
 $headers = array(
     "Content-Type: application/x-www-form-urlencoded",
-    "candidateid: bphiri.aki@gmail.com",
+    "candidateid: " . ' ' . $user,
     "apikey: 3fdb48c5-336b-47f9-87e4-ae73b8036a1c",
 );
 $opts = array(
