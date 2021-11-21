@@ -8,5 +8,9 @@ Getting Started
 - Copy or move the downloaded repository to xampp\htdocs folder which located in C drive
 - Open up a web browser and run the project by typing in the downloaded repo URL field
 
+OR
+
+The site can also be accessed on https://taxpayersmw.000webhostapp.com/
+
 
 
