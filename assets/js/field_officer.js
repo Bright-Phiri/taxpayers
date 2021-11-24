@@ -35,4 +35,11 @@ function sign_in() {
 
         }
     });
+
+    $("input[type='password']").keypress(function(e) {
+        var code = e.which;
+        if (code == 13) {
+            $("#login-btn").click();
+        }
+    });
 }
